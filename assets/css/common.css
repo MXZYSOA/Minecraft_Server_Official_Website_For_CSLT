@@ -103,7 +103,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(236, 72, 153, 0.1), rgba(219, 39, 119, 0.1)), url('../../images/pic07.jpg');
+    background: linear-gradient(rgba(236, 72, 153, 0.1), rgba(219, 39, 119, 0.1)), url('../../images/rankings-preview.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

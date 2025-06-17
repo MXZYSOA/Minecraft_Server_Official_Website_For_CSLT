@@ -1,5 +1,7 @@
 # 🌟 创世乐土 Minecraft 服务器官方网站
 
+由 PixelCraft 工作室开发
+
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
@@ -8,7 +10,7 @@
 
 ## 📖 项目简介
 
-创世乐土 Minecraft 服务器官方网站是一个现代化、响应式的游戏服务器展示网站。网站采用组件化设计，为玩家提供服务器信息、游戏指南、排行榜、赞助支持等功能，致力于打造最佳的 Minecraft 游戏社区体验。
+创世乐土 Minecraft 服务器官方网站是由 PixelCraft 工作室精心打造的现代化、响应式的游戏服务器展示网站。网站采用组件化设计，为玩家提供服务器信息、游戏指南、排行榜、赞助支持等功能，致力于打造最佳的 Minecraft 游戏社区体验。
 
 ## ✨ 主要功能
 
@@ -274,12 +276,14 @@ Minecraft_Server_Official_Website_For_CSLT/
 ## 📞 联系我们
 
 - **服务器 IP**: `mc.cslt.top`
+- **开发团队**: PixelCraft 工作室
 - **QQ 群**: 159998932
 - **邮箱**: 2106839018@qq.com
 
 ## 🙏 致谢
 
 感谢所有为创世乐土服务器贡献的玩家和开发者！
+特别感谢 PixelCraft 工作室团队的辛勤付出！
 
 特别感谢：
 - Bootstrap 团队提供的优秀框架
