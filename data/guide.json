@@ -1,0 +1,269 @@
+{
+  "title": "🌸 创世乐土MC服务器入坑指南",
+  "description": "欢迎来到创世乐土Minecraft服务器！本指南将带你轻松入门，开启你的专属旅程～(∠・ω< )⌒☆",
+  "lastUpdated": "2025-06-04",
+  "sections": [
+    {
+      "id": "server-info",
+      "title": "🌟 服务器信息",
+      "icon": "🎮",
+      "content": [
+        {
+          "type": "text",
+          "content": "🌟 版本：1.8.X – 1.20.X | IP：mc.cslt.top"
+        },
+        {
+          "type": "text",
+          "content": "🌟 配置Mac M4芯片 + 6G内存（后续会升级）"
+        },
+        {
+          "type": "text",
+          "content": "🎯 核心玩法：粘液科技 × 原版生存"
+        }
+      ]
+    },
+    {
+      "id": "slimefun-features",
+      "title": "🔧 粘液科技特色",
+      "icon": "⚗️",
+      "content": [
+        {
+          "type": "features",
+          "items": [
+            {
+              "name": "自动化狂喜",
+              "description": "用粘液机器实现全自动农场/矿机，支持红石联动！(≧∇≦)ﾉ"
+            },
+            {
+              "name": "独家装备",
+              "description": "一键连锁挖矿、伐木（小声：小挂允许哦~）"
+            },
+            {
+              "name": "电力系统",
+              "description": "电表会显示机器耗能，超载会冒烟 (╯°□°)╯︵ ┻━┻"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vanilla-optimization",
+      "title": "🌍 原版优化",
+      "icon": "🛠️",
+      "content": [
+        {
+          "type": "text",
+          "content": "死亡墓碑机制｜苦力怕不炸家｜耕地防踩"
+        },
+        {
+          "type": "text",
+          "content": "资源世界每周重置，主世界建筑永久保存！"
+        }
+      ]
+    },
+    {
+      "id": "economy-system",
+      "title": "💰 独特经济系统",
+      "icon": "💎",
+      "content": [
+        {
+          "type": "subsection",
+          "title": "🪙 货币获取",
+          "items": [
+            {
+              "name": "主城签到",
+              "description": "随机奖励金币or稀有材料"
+            },
+            {
+              "name": "主城挂机池",
+              "description": "每小时领「挂机币」"
+            },
+            {
+              "name": "玩家商店",
+              "description": "用箱子+木牌创建，也可以在官方商店售卖(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧"
+            }
+          ]
+        },
+        {
+          "type": "subsection",
+          "title": "🎁 官方商城",
+          "content": [
+            {
+              "type": "text",
+              "content": "输入 /菜单 打开菜单，可购买："
+            },
+            {
+              "type": "list",
+              "items": [
+                "粘液科技材料包",
+                "装饰方块",
+                "飞行、会员、材料等等"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rules-and-protection",
+      "title": "⚔️ 规则 & 防熊指南",
+      "icon": "⚖️",
+      "content": [
+        {
+          "type": "subsection",
+          "title": "🚫 严禁行为",
+          "items": [
+            {
+              "name": "外挂（飞行/杀戮光环）",
+              "description": "直接封禁"
+            },
+            {
+              "name": "熊建筑（恶意破坏/偷窃）",
+              "description": "账户回档+公示处刑 (╬ Ò﹏Ó)"
+            },
+            {
+              "name": "卡服机器（恶意红石高频）",
+              "description": "自动检测+强制关机"
+            }
+          ]
+        },
+        {
+          "type": "subsection",
+          "title": "✅ 允许行为",
+          "content": [
+            {
+              "type": "text",
+              "content": "小挂（比如自动钓鱼/整理背包）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "land-claiming",
+      "title": "🏡 圈地教程（3秒学会）",
+      "icon": "🏠",
+      "content": [
+        {
+          "type": "steps",
+          "items": [
+            "拿木锄头（对，就是那个木头的！）",
+            "左键选点A，右键选点B → 搞定！",
+            "输入 /res help 查看详细指令（比如扩容/加权限）"
+          ]
+        },
+        {
+          "type": "tips",
+          "title": "💡 小技巧：",
+          "items": [
+            "圈地可 垂直扩展（对天空右键选高度）",
+            "领地内 禁止PVP，安心种田吧～(￣▽￣)~*"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "events-and-competitions",
+      "title": "🎪 活动 & 比赛",
+      "icon": "🏆",
+      "content": [
+        {
+          "type": "subsection",
+          "title": "🏆 常驻比赛",
+          "items": [
+            {
+              "name": "建筑大赛",
+              "description": "不定时开启建筑大赛，奖品多多！"
+            },
+            {
+              "name": "钓鱼大赛",
+              "description": "看看谁才是服务器中的钓鱼佬！"
+            },
+            {
+              "name": "挖矿锦标赛",
+              "description": "10分钟内谁挖的钻石多？"
+            }
+          ]
+        },
+        {
+          "type": "subsection",
+          "title": "🎉 特殊活动（节日限定）",
+          "items": [
+            {
+              "name": "万圣节",
+              "description": "打怪掉落限定皮肤！"
+            },
+            {
+              "name": "春节",
+              "description": "全服红包雨 /hongbao"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "more-help",
+      "title": "📚 更多帮助",
+      "icon": "💬",
+      "content": [
+        {
+          "type": "help-channels",
+          "items": [
+            {
+              "channel": "B站教程",
+              "method": "点击传送（含粘液科技入门）",
+              "response": "视频教程"
+            },
+            {
+              "channel": "QQ群",
+              "method": "159998932（群文件有 粘液材质包 下载！）",
+              "response": "即时交流"
+            },
+            {
+              "channel": "召唤腐竹",
+              "method": "QQ群内：输入 @2106839018 召唤腐竹，超听劝！(๑•̀ㅂ•́)و✧",
+              "response": "直接联系"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "admin-message",
+      "title": "💬 腐竹留言",
+      "icon": "📝",
+      "content": [
+        {
+          "type": "text",
+          "content": "\"被欺负了？找咱！缺钱了？找咱！想办新比赛？更要找咱！\""
+        },
+        {
+          "type": "text",
+          "content": "服务器持续更新，你的建议就是下一个版本内容！ ٩(◕‿◕｡)۶"
+        }
+      ]
+    }
+  ],
+  "quickLinks": [
+    {
+      "title": "加入服务器",
+      "url": "survival-server.html",
+      "icon": "🚪"
+    },
+    {
+      "title": "问答中心",
+      "url": "faq.html",
+      "icon": "❓"
+    },
+    {
+      "title": "玩家排行榜",
+      "url": "rankings.html",
+      "icon": "🏆"
+    },
+    {
+      "title": "便捷功能",
+      "url": "features.html",
+      "icon": "⚡"
+    }
+  ]
+}

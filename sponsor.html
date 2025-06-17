@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赞助支持 - 创世乐土 Minecraft 服务器</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="assets/css/common.css">
+    <style>
+        /* Page Specific Styles */
+        .hero-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 3rem 0;
+            margin: -3rem 0 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Sponsorship Tiers */
+        .tier-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tier-card.popular {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .tier-card.popular::before {
+            content: '最受欢迎';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+
+        .tier-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tier-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-duration {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .benefit-list li:last-child {
+            border-bottom: none;
+        }
+
+        .benefit-list li i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Payment Methods */
+        .payment-method {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .payment-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+
+        /* FAQ */
+        .accordion-button {
+            background: var(--bg-light);
+            border: none;
+            font-weight: 600;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--light-pink);
+            color: var(--primary-color);
+        }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(236, 72, 153, 0.25);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer h5 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Progress Bar */
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            background: var(--border-color);
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 20px 20px 0 0;
+        }
+
+        /* QR Code */
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: #f8f9fa;
+            border: 2px dashed var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0;
+            }
+            
+            .tier-card.popular {
+                transform: none;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <!-- 导航栏组件 -->
+    <div data-component="navbar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center hero-content">
+                    <h1 class="display-4 fw-bold mb-4 fade-in-up">支持创世乐土的发展</h1>
+                    <p class="lead mb-4 fade-in-up">您的每一份赞助都将直接用于改善服务器性能和玩家体验</p>
+                    <div class="d-flex justify-content-center gap-3 fade-in-up">
+                        <a href="#tiers" class="btn btn-light btn-lg">
+                            <i class="fas fa-gift me-2"></i>查看赞助方案
+                        </a>
+                        <a href="#stats" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-chart-line me-2"></i>赞助统计
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="fw-bold mb-3">赞助统计</h2>
+                    <p class="text-muted">感谢所有赞助者的支持</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalSponsors">0</div>
+                        <h5>总赞助人数</h5>
+                        <p class="text-muted mb-0">累计赞助者</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalAmount">¥0</div>
+                        <h5>总赞助金额</h5>
+                        <p class="text-muted mb-0">累计收到赞助</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-number" id="monthlySponsors">0</div>
+                        <h5>本月赞助</h5>
+                        <p class="text-muted mb-0">当月新增</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card">
+                        <div class="stat-number" id="serverUptime">99.9%</div>
+                        <h5>服务器稳定性</h5>
+                        <p class="text-muted mb-0">月度平均</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Progress towards goal -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <h5 class="card-title text-center mb-3">
+                                <i class="fas fa-target text-primary me-2"></i>本月目标进度
+                            </h5>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>已筹集: ¥<span id="currentGoal">0</span></span>
+                                <span>目标: ¥<span id="monthlyGoal">5000</span></span>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" id="goalProgress"></div>
+                            </div>
+                            <p class="text-center text-muted mb-0">用于服务器硬件升级和带宽扩容</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsorship Tiers -->
+    <section id="tiers" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="fw-bold mb-3">赞助方案</h2>
+                    <p class="text-muted">选择适合您的赞助等级，获得专属权益</p>
+                </div>
+            </div>
+            <div class="row g-4" id="sponsorshipTiers">
+                <!-- Tiers will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="fw-bold mb-3">支付方式</h2>
+                    <p class="text-muted">支持多种便捷的支付方式</p>
+                </div>
+            </div>
+            <div class="row g-4" id="paymentMethods">
+                <!-- Payment methods will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="fw-bold mb-3">玩家评价</h2>
+                    <p class="text-muted">听听赞助者们的真实反馈</p>
+                </div>
+            </div>
+            <div class="row g-4" id="testimonials">
+                <!-- Testimonials will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-center fw-bold mb-5">常见问题</h2>
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold mb-3">赞助相关咨询</h2>
+                    <p class="text-muted mb-4">如有任何赞助相关问题，欢迎通过以下方式联系我们</p>
+                    <div class="row g-3" id="contactMethods">
+                        <!-- Contact methods will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- 页脚组件 -->
+    <div data-component="footer"></div>
+
+    <!-- Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-credit-card me-2"></i>选择支付方式
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <h6 id="selectedTierName">白银赞助者</h6>
+                        <p class="text-muted mb-0">金额: <span id="selectedTierPrice">¥68</span></p>
+                    </div>
+                    
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="payment-method" onclick="selectPayment('wechat')">
+                                <div class="payment-icon text-success">
+                                    <i class="fab fa-weixin"></i>
+                                </div>
+                                <h6>微信支付</h6>
+                                <small class="text-muted">扫码支付</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="payment-method" onclick="selectPayment('alipay')">
+                                <div class="payment-icon text-primary">
+                                    <i class="fab fa-alipay"></i>
+                                </div>
+                                <h6>支付宝</h6>
+                                <small class="text-muted">扫码支付</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="payment-method" onclick="selectPayment('qq')">
+                                <div class="payment-icon text-info">
+                                    <i class="fab fa-qq"></i>
+                                </div>
+                                <h6>QQ钱包</h6>
+                                <small class="text-muted">QQ支付</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="payment-method" onclick="selectPayment('bank')">
+                                <div class="payment-icon text-warning">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <h6>银行卡</h6>
+                                <small class="text-muted">网银支付</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="qrCodeSection" class="text-center mt-4" style="display: none;">
+                        <div class="qr-code">
+                            <i class="fas fa-qrcode fa-3x text-muted"></i>
+                        </div>
+                        <p class="mt-3 text-muted">请使用对应APP扫描二维码完成支付</p>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            支付完成后，系统将在5分钟内自动发放权益
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="confirmPayment()">确认支付</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Load sponsor data
+        let sponsorData = {};
+        let selectedTier = null;
+        
+        // Load data from JSON file
+        async function loadSponsorData() {
+            try {
+                const response = await fetch('data/sponsor.json');
+                sponsorData = await response.json();
+                renderSponsorshipTiers();
+                renderPaymentMethods();
+                renderTestimonials();
+                renderFAQ();
+                renderContactMethods();
+                updateStats();
+            } catch (error) {
+                console.error('Error loading sponsor data:', error);
+                // Fallback to demo data
+                loadDemoData();
+            }
+        }
+        
+        // Demo data fallback
+        function loadDemoData() {
+            sponsorData = {
+                sponsorshipTiers: [
+                    {
+                        id: 'bronze',
+                        name: '青铜赞助者',
+                        price: '¥30',
+                        duration: '30天',
+                        color: '#CD7F32',
+                        icon: '🥉',
+                        popular: false,
+                        benefits: [
+                            '专属青铜赞助者称号',
+                            '聊天消息特殊颜色显示',
+                            '优先进入服务器（跳过排队）',
+                            '专属赞助者QQ群',
+                            '每日签到额外奖励'
+                        ],
+                        gamePerks: [
+                            '背包扩展 +9格',
+                            '家园数量 +2个',
+                            '每日金币奖励 +50',
+                            '传送冷却时间 -50%'
+                        ]
+                    },
+                    {
+                        id: 'silver',
+                        name: '白银赞助者',
+                        price: '¥68',
+                        duration: '30天',
+                        color: '#C0C0C0',
+                        icon: '🥈',
+                        popular: true,
+                        benefits: [
+                            '包含青铜赞助者所有权益',
+                            '专属白银赞助者称号',
+                            '聊天消息发光效果',
+                            '专属白银表情包',
+                            '优先客服支持',
+                            '月度专属礼品包'
+                        ],
+                        gamePerks: [
+                            '背包扩展 +18格',
+                            '家园数量 +5个',
+                            '每日金币奖励 +120',
+                            '传送冷却时间 -75%',
+                            '飞行权限（安全区域）',
+                            '专属白银工具套装'
+                        ]
+                    },
+                    {
+                        id: 'gold',
+                        name: '黄金赞助者',
+                        price: '¥128',
+                        duration: '30天',
+                        color: '#FFD700',
+                        icon: '🥇',
+                        popular: false,
+                        benefits: [
+                            '包含白银赞助者所有权益',
+                            '专属黄金赞助者称号',
+                            '彩虹聊天消息效果',
+                            '自定义称号权限',
+                            '专属黄金皮肤',
+                            'VIP客服专线',
+                            '参与服务器决策投票权'
+                        ],
+                        gamePerks: [
+                            '背包扩展 +27格',
+                            '家园数量 +10个',
+                            '每日金币奖励 +250',
+                            '无传送冷却时间',
+                            '全区域飞行权限',
+                            '专属黄金装备套装',
+                            '宠物召唤权限',
+                            '私人仓库 +54格'
+                        ]
+                    },
+                    {
+                        id: 'diamond',
+                        name: '钻石赞助者',
+                        price: '¥298',
+                        duration: '30天',
+                        color: '#B9F2FF',
+                        icon: '💎',
+                        popular: false,
+                        benefits: [
+                            '包含黄金赞助者所有权益',
+                            '专属钻石赞助者称号',
+                            '全服公告权限',
+                            '专属钻石粒子效果',
+                            '自定义进入/离开消息',
+                            '专属钻石表情包',
+                            '服务器内测资格',
+                            '与管理团队直接沟通'
+                        ],
+                        gamePerks: [
+                            '背包扩展 +36格',
+                            '家园数量 +20个',
+                            '每日金币奖励 +500',
+                            '瞬间传送',
+                            '创造模式权限（个人区域）',
+                            '专属钻石神器套装',
+                            '召唤专属坐骑',
+                            '私人仓库 +108格',
+                            '世界编辑权限（限制区域）'
+                        ]
+                    }
+                ],
+                paymentMethods: [
+                    { name: '微信支付', icon: '💚', description: '扫描二维码即可完成支付', available: true },
+                    { name: '支付宝', icon: '💙', description: '支持花呗分期付款', available: true },
+                    { name: 'QQ钱包', icon: '🐧', description: 'QQ用户专享便捷支付', available: true },
+                    { name: '银行卡', icon: '💳', description: '支持各大银行借记卡和信用卡', available: true }
+                ],
+                testimonials: [
+                    { player: 'Steve_Builder', tier: '黄金赞助者', comment: '赞助后的游戏体验真的提升了很多，特别是飞行权限让建造变得更加便捷！', rating: 5 },
+                    { player: 'Alex_Crafter', tier: '白银赞助者', comment: '客服响应很快，赞助权益也很实用，值得支持这个优秀的服务器！', rating: 5 },
+                    { player: 'Diamond_Hunter', tier: '钻石赞助者', comment: '作为老玩家，很高兴能通过赞助支持服务器发展，希望创世乐土越来越好！', rating: 5 }
+                ],
+                faq: [
+                    { question: '赞助权益何时生效？', answer: '支付成功后，系统会在5分钟内自动发放权益。如遇延迟，请联系客服处理。' },
+                    { question: '赞助权益可以叠加吗？', answer: '同等级赞助权益时间可以叠加，不同等级赞助会覆盖低等级权益，时间重新计算。' },
+                    { question: '可以申请退款吗？', answer: '由于虚拟商品的特殊性，一般情况下不支持退款。特殊情况请联系管理员协商处理。' },
+                    { question: '赞助权益会因为违规被取消吗？', answer: '如果违反服务器规则被封禁，赞助权益也会相应暂停。解封后权益会恢复，时间不会补偿。' },
+                    { question: '如何查看我的赞助状态？', answer: '游戏内使用 /vip 指令可以查看当前赞助等级和剩余时间。' },
+                    { question: '赞助资金用途透明吗？', answer: '我们会定期在社区公布资金使用情况，确保每一分钱都用于改善服务器体验。' }
+                ],
+                contact: {
+                    methods: [
+                        { name: 'QQ客服', value: '加入官方QQ群咨询', link: 'https://qm.qq.com/q/eM75MKpz0s', icon: '💬' },
+                        { name: 'B站私信', value: '@像素方块', link: 'https://space.bilibili.com/526203125', icon: '📺' },
+                        { name: '游戏内咨询', value: '/helpop [问题描述]', link: '', icon: '🎮' }
+                    ]
+                }
+            };
+            
+            renderSponsorshipTiers();
+            renderPaymentMethods();
+            renderTestimonials();
+            renderFAQ();
+            renderContactMethods();
+            updateStats();
+        }
+        
+        // Render sponsorship tiers
+        function renderSponsorshipTiers() {
+            const container = document.getElementById('sponsorshipTiers');
+            container.innerHTML = '';
+            
+            sponsorData.sponsorshipTiers.forEach(tier => {
+                const tierCard = document.createElement('div');
+                tierCard.className = 'col-lg-3 col-md-6';
+                tierCard.innerHTML = `
+                    <div class="tier-card ${tier.popular ? 'popular' : ''}">
+                        <div class="text-center">
+                            <div class="tier-icon">${tier.icon}</div>
+                            <h4 class="tier-name" style="color: ${tier.color}">${tier.name}</h4>
+                            <div class="tier-price" style="color: ${tier.color}">${tier.price}</div>
+                            <div class="tier-duration">${tier.duration}</div>
+                        </div>
+                        
+                        <h6 class="mb-3"><i class="fas fa-star text-warning me-2"></i>专属权益</h6>
+                        <ul class="benefit-list">
+                            ${tier.benefits.map(benefit => `<li><i class="fas fa-check"></i> ${benefit}</li>`).join('')}
+                        </ul>
+                        
+                        <h6 class="mb-3"><i class="fas fa-gamepad text-primary me-2"></i>游戏特权</h6>
+                        <ul class="benefit-list">
+                            ${tier.gamePerks.map(perk => `<li><i class="fas fa-gem"></i> ${perk}</li>`).join('')}
+                        </ul>
+                        
+                        <button class="btn btn-primary w-100" onclick="selectTier('${tier.id}')">
+                            <i class="fas fa-shopping-cart me-2"></i>立即赞助
+                        </button>
+                    </div>
+                `;
+                container.appendChild(tierCard);
+            });
+        }
+        
+        // Render payment methods
+        function renderPaymentMethods() {
+            const container = document.getElementById('paymentMethods');
+            container.innerHTML = '';
+            
+            sponsorData.paymentMethods.forEach(method => {
+                const methodCard = document.createElement('div');
+                methodCard.className = 'col-lg-3 col-md-6';
+                methodCard.innerHTML = `
+                    <div class="payment-method">
+                        <div class="payment-icon">${method.icon}</div>
+                        <h5>${method.name}</h5>
+                        <p class="text-muted mb-0">${method.description}</p>
+                        ${method.available ? '<span class="badge bg-success mt-2">可用</span>' : '<span class="badge bg-secondary mt-2">暂不可用</span>'}
+                    </div>
+                `;
+                container.appendChild(methodCard);
+            });
+        }
+        
+        // Render testimonials
+        function renderTestimonials() {
+            const container = document.getElementById('testimonials');
+            container.innerHTML = '';
+            
+            sponsorData.testimonials.forEach(testimonial => {
+                const testimonialCard = document.createElement('div');
+                testimonialCard.className = 'col-lg-4';
+                testimonialCard.innerHTML = `
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            ${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}
+                        </div>
+                        <p class="mb-3">"${testimonial.comment}"</p>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                ${testimonial.player.charAt(0)}
+                            </div>
+                            <div>
+                                <h6 class="mb-0">${testimonial.player}</h6>
+                                <small class="text-muted">${testimonial.tier}</small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(testimonialCard);
+            });
+        }
+        
+        // Render FAQ
+        function renderFAQ() {
+            const container = document.getElementById('faqAccordion');
+            container.innerHTML = '';
+            
+            sponsorData.faq.forEach((item, index) => {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'accordion-item';
+                faqItem.innerHTML = `
+                    <h2 class="accordion-header">
+                        <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#faq${index}">
+                            ${item.question}
+                        </button>
+                    </h2>
+                    <div id="faq${index}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ${item.answer}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(faqItem);
+            });
+        }
+        
+        // Render contact methods
+        function renderContactMethods() {
+            const container = document.getElementById('contactMethods');
+            container.innerHTML = '';
+            
+            sponsorData.contact.methods.forEach(method => {
+                const contactCard = document.createElement('div');
+                contactCard.className = 'col-md-4';
+                contactCard.innerHTML = `
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <span style="font-size: 2rem;">${method.icon}</span>
+                        </div>
+                        <h6>${method.name}</h6>
+                        <p class="text-muted">${method.value}</p>
+                        ${method.link ? `<a href="${method.link}" class="btn btn-outline-primary btn-sm" target="_blank">联系我们</a>` : ''}
+                    </div>
+                `;
+                container.appendChild(contactCard);
+            });
+        }
+        
+        // Update statistics
+        function updateStats() {
+            // Simulate real-time data
+            const stats = {
+                totalSponsors: 1247,
+                totalAmount: 89650,
+                monthlySponsors: 156,
+                currentGoal: 3200,
+                monthlyGoal: 5000
+            };
+            
+            // Animate numbers
+            animateNumber('totalSponsors', stats.totalSponsors);
+            animateNumber('totalAmount', stats.totalAmount, '¥');
+            animateNumber('monthlySponsors', stats.monthlySponsors);
+            animateNumber('currentGoal', stats.currentGoal);
+            
+            // Update progress bar
+            const progress = (stats.currentGoal / stats.monthlyGoal) * 100;
+            document.getElementById('goalProgress').style.width = progress + '%';
+        }
+        
+        // Animate numbers
+        function animateNumber(elementId, targetValue, prefix = '') {
+            const element = document.getElementById(elementId);
+            const startValue = 0;
+            const duration = 2000;
+            const startTime = performance.now();
+            
+            function updateNumber(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const currentValue = Math.floor(startValue + (targetValue - startValue) * progress);
+                
+                element.textContent = prefix + currentValue.toLocaleString();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                }
+            }
+            
+            requestAnimationFrame(updateNumber);
+        }
+        
+        // Select tier for purchase
+        function selectTier(tierId) {
+            selectedTier = sponsorData.sponsorshipTiers.find(tier => tier.id === tierId);
+            if (selectedTier) {
+                document.getElementById('selectedTierName').textContent = selectedTier.name;
+                document.getElementById('selectedTierPrice').textContent = selectedTier.price;
+                
+                const modal = new bootstrap.Modal(document.getElementById('paymentModal'));
+                modal.show();
+            }
+        }
+        
+        // Select payment method
+        function selectPayment(method) {
+            // Hide all payment methods and show QR code
+            document.getElementById('qrCodeSection').style.display = 'block';
+            
+            // In a real implementation, you would generate actual QR codes here
+            console.log(`Selected payment method: ${method} for tier: ${selectedTier.name}`);
+        }
+        
+        // Confirm payment
+        function confirmPayment() {
+            // In a real implementation, this would process the payment
+            alert('支付功能正在开发中，请联系客服完成赞助！');
+            
+            const modal = bootstrap.Modal.getInstance(document.getElementById('paymentModal'));
+            modal.hide();
+        }
+        
+        // Update online count
+        function updateOnlineCount() {
+            // Simulate online player count
+            const count = Math.floor(Math.random() * 50) + 80;
+            document.getElementById('onlineCount').textContent = count;
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSponsorData();
+            updateOnlineCount();
+            
+            // Update online count every 30 seconds
+            setInterval(updateOnlineCount, 30000);
+        });
+    </script>
+    
+    <!-- 组件加载器 -->
+    <script src="components/component-loader.js"></script>
+    <!-- 动画脚本 -->
+    <script src="assets/js/animations.js"></script>
+</body>
+</html>

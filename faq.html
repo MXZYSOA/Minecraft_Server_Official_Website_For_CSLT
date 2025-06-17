@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>问答中心 - 创世乐土服务器 | 官方网站</title>
+    <meta name="keywords" content="创世乐土,像素方块,PixelCraft,我的世界服务器,生存服,空岛服,">
+    <link rel="shortcut icon" href="images/cd.ico"/>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="assets/css/common.css">
+    <!-- Page Specific CSS -->
+    <style>
+        .hero-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(236, 72, 153, 0.2);
+        }
+        
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .navbar {
+            background: rgba(253, 242, 248, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .footer {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .faq-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .accordion-button {
+            background-color: rgba(236, 72, 153, 0.1);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(236, 72, 153, 0.25);
+        }
+        
+        .accordion-item {
+            border: none;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .accordion-body {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .feature-highlight {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(219, 39, 119, 0.1));
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .icon-large {
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .stats-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid rgba(236, 72, 153, 0.1);
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <!-- Navigation -->
+    <div data-component="navbar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold mb-4">
+                        <i class="bi bi-question-circle"></i> 问答中心
+                    </h1>
+                    <p class="lead">常见问题解答，帮助您快速了解服务器</p>
+                    <p class="text-muted">如果您有其他问题，欢迎加入我们的交流群咨询</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Server Stats -->
+            <div class="row mb-5">
+                <div class="col-md-4 mb-4">
+                    <div class="stats-card">
+                        <i class="bi bi-people icon-large mb-3"></i>
+                        <div class="stats-number">500+</div>
+                        <p class="text-muted mb-0">活跃玩家</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="stats-card">
+                        <i class="bi bi-clock icon-large mb-3"></i>
+                        <div class="stats-number">24/7</div>
+                        <p class="text-muted mb-0">在线运行</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="stats-card">
+                        <i class="bi bi-server icon-large mb-3"></i>
+                        <div class="stats-number">3</div>
+                        <p class="text-muted mb-0">服务器数量</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-center text-primary mb-5">
+                        <i class="bi bi-chat-square-text"></i> 常见问题
+                    </h2>
+                    
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                    <i class="bi bi-server me-2"></i> 如何加入服务器？
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p><strong>服务器地址：</strong> <code>play.imsmc.top</code></p>
+                                    <p><strong>端口：</strong> <code>19132</code></p>
+                                    <p><strong>版本要求：</strong> 基岩版 1.20.x</p>
+                                    <ol>
+                                        <li>打开我的世界基岩版</li>
+                                        <li>点击"游戏"→"服务器"</li>
+                                        <li>添加服务器，输入上述地址和端口</li>
+                                        <li>点击加入即可开始游戏</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                    <i class="bi bi-shield-check me-2"></i> 服务器有哪些规则？
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>禁止恶意破坏：</strong> 不得破坏他人建筑或恶意PVP</li>
+                                        <li><strong>文明聊天：</strong> 禁止发送不当言论、广告或刷屏</li>
+                                        <li><strong>公平游戏：</strong> 禁止使用外挂、作弊工具</li>
+                                        <li><strong>尊重他人：</strong> 友善对待其他玩家</li>
+                                        <li><strong>合理建造：</strong> 不得建造过于庞大影响服务器性能的建筑</li>
+                                    </ul>
+                                    <p class="text-muted">违反规则将面临警告、禁言或封禁处理</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                    <i class="bi bi-globe me-2"></i> 有哪些服务器可以选择？
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card h-100">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-tree icon-large mb-3"></i>
+                                                    <h5 class="card-title text-primary">生存服务器</h5>
+                                                    <p class="card-text">原版生存体验，与朋友一起建造属于你们的世界</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card h-100">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-hammer icon-large mb-3"></i>
+                                                    <h5 class="card-title text-primary">创造服务器</h5>
+                                                    <p class="card-text">无限资源，发挥创意建造宏伟建筑</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card h-100">
+                                                <div class="card-body text-center">
+                                                    <i class="bi bi-grid icon-large mb-3"></i>
+                                                    <h5 class="card-title text-primary">超平坦服务器</h5>
+                                                    <p class="card-text">平坦地形，适合大型建筑项目</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-center mt-3">使用 <code>/tr s</code>、<code>/tr c</code>、<code>/tr p</code> 指令在服务器间切换</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                    <i class="bi bi-tools me-2"></i> 如何使用服务器的特色功能？
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <h6 class="text-primary">常用指令：</h6>
+                                    <ul>
+                                        <li><code>/m</code> - 打开快捷菜单</li>
+                                        <li><code>/ob</code> - 灵魂出窍模式</li>
+                                        <li><code>/heres</code> - 广播当前坐标</li>
+                                        <li><code>/ranking</code> - 查看排行榜</li>
+                                        <li><code>/fpg</code> - 假人管理面板</li>
+                                    </ul>
+                                    <p class="text-muted">更多功能请查看 <a href="features.html" class="text-primary">便捷功能</a> 页面</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                    <i class="bi bi-question-circle me-2"></i> 遇到问题如何寻求帮助？
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="text-primary">联系方式：</h6>
+                                            <ul>
+                                                <li><i class="bi bi-chat-dots text-primary me-2"></i>加入QQ交流群</li>
+                                                <li><i class="bi bi-envelope text-primary me-2"></i>发送邮件咨询</li>
+                                                <li><i class="bi bi-person-badge text-primary me-2"></i>联系在线管理员</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="text-primary">常见问题类型：</h6>
+                                            <ul>
+                                                <li>连接问题</li>
+                                                <li>游戏规则咨询</li>
+                                                <li>功能使用帮助</li>
+                                                <li>举报违规行为</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 6 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+                                    <i class="bi bi-gift me-2"></i> 如何支持服务器发展？
+                                </button>
+                            </h2>
+                            <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>您可以通过以下方式支持我们：</p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul>
+                                                <li><i class="bi bi-heart text-danger me-2"></i>邀请朋友加入</li>
+                                                <li><i class="bi bi-star text-warning me-2"></i>分享服务器给其他玩家</li>
+                                                <li><i class="bi bi-chat-square-heart text-primary me-2"></i>在社交媒体宣传</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul>
+                                                <li><i class="bi bi-currency-dollar text-success me-2"></i>赞助服务器运营</li>
+                                                <li><i class="bi bi-bug text-info me-2"></i>反馈问题和建议</li>
+                                                <li><i class="bi bi-people text-primary me-2"></i>参与社区活动</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <a href="sponsor.html" class="btn btn-primary">
+                                            <i class="bi bi-heart"></i> 了解赞助详情
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="feature-highlight mt-5">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h3 class="text-primary mb-3">
+                            <i class="bi bi-headset"></i> 还有其他问题？
+                        </h3>
+                        <p class="mb-0">我们的管理团队随时为您提供帮助，欢迎加入交流群与我们联系！</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <a href="https://qm.qq.com/q/eM75MKpz0s" class="btn btn-primary btn-lg">
+                            <i class="bi bi-chat-dots"></i> 加入交流群
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="index.html" class="btn btn-primary btn-lg">
+                    <i class="bi bi-house"></i> 返回首页
+                </a>
+                <a href="features.html" class="btn btn-outline-primary btn-lg ms-3">
+                    <i class="bi bi-tools"></i> 便捷功能
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div data-component="footer"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Component Loader -->
+    <script src="components/component-loader.js"></script>
+    
+    <!-- Smooth scrolling for anchor links -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件使用示例 - 创世乐土</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --primary-light: #f8bbd9;
+            --primary-dark: #ad1457;
+            --secondary-color: #ff4081;
+            --accent-color: #ffc107;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --bg-light: #f8f9fa;
+            --bg-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background: rgba(233, 30, 99, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 0 2px;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            border: none;
+            color: var(--text-dark);
+            font-weight: bold;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #ffb300;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        .content-section {
+            background: white;
+            margin: 50px 0;
+            padding: 50px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            background: var(--primary-dark) !important;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer .fab, .footer .fas {
+            transition: all 0.3s ease;
+        }
+
+        .footer .fab:hover, .footer .fas:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏组件 -->
+    <div data-component="navbar"></div>
+
+    <!-- 主要内容 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">组件系统示例</h1>
+                <p class="hero-subtitle">展示如何使用可复用的导航栏和页脚组件</p>
+                <a href="#demo" class="btn btn-primary">
+                    <i class="fas fa-rocket me-2"></i>查看演示
+                </a>
+            </div>
+        </section>
+
+        <!-- 内容区域 -->
+        <section id="demo" class="content-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="text-center mb-5">组件使用演示</h2>
+                        
+                        <div class="demo-card">
+                            <h4><i class="fas fa-code me-2 text-primary"></i>HTML 结构</h4>
+                            <p>在页面中使用组件非常简单，只需要添加带有 <code>data-component</code> 属性的元素：</p>
+                            <div class="code-block">
+&lt;!-- 导航栏组件 --&gt;<br>
+&lt;div data-component="navbar"&gt;&lt;/div&gt;<br><br>
+&lt;!-- 页面内容 --&gt;<br>
+&lt;main&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- 你的内容 --&gt;<br>
+&lt;/main&gt;<br><br>
+&lt;!-- 页脚组件 --&gt;<br>
+&lt;div data-component="footer"&gt;&lt;/div&gt;<br><br>
+&lt;!-- 组件加载器 --&gt;<br>
+&lt;script src="components/component-loader.js"&gt;&lt;/script&gt;
+                            </div>
+                        </div>
+
+                        <div class="demo-card">
+                            <h4><i class="fas fa-cogs me-2 text-success"></i>自动加载</h4>
+                            <p>组件会在页面加载完成后自动加载，无需额外的JavaScript代码。</p>
+                            <ul>
+                                <li>导航栏会自动高亮当前页面</li>
+                                <li>页脚会自动更新在线人数</li>
+                                <li>所有交互功能都会正常工作</li>
+                            </ul>
+                        </div>
+
+                        <div class="demo-card">
+                            <h4><i class="fas fa-sync-alt me-2 text-warning"></i>动态控制</h4>
+                            <p>你也可以通过JavaScript手动控制组件的加载：</p>
+                            <div class="code-block">
+// 手动加载所有组件<br>
+loadComponents().then(() => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.log('组件加载完成');<br>
+});<br><br>
+// 重新加载特定组件<br>
+reloadComponent('navbar');
+                            </div>
+                            <div class="mt-3">
+                                <button class="btn btn-outline-primary me-2" onclick="reloadComponent('navbar')">
+                                    <i class="fas fa-redo me-1"></i>重新加载导航栏
+                                </button>
+                                <button class="btn btn-outline-success" onclick="reloadComponent('footer')">
+                                    <i class="fas fa-redo me-1"></i>重新加载页脚
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="demo-card">
+                            <h4><i class="fas fa-info-circle me-2 text-info"></i>优势</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>统一性：</strong>所有页面使用相同的组件</li>
+                                        <li><strong>维护性：</strong>只需修改一个文件</li>
+                                        <li><strong>复用性：</strong>可在任何页面中使用</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>灵活性：</strong>支持动态加载和重载</li>
+                                        <li><strong>简单性：</strong>使用简单，无需复杂配置</li>
+                                        <li><strong>扩展性：</strong>易于添加新组件</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚组件 -->
+    <div data-component="footer"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 组件加载器 -->
+    <script src="component-loader.js"></script>
+    
+    <script>
+        // 页面特定的JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待组件加载完成
+            loadComponents().then(() => {
+                console.log('示例页面：所有组件加载完成');
+                
+                // 添加一些页面特定的功能
+                const heroSection = document.querySelector('.hero-section');
+                if (heroSection) {
+                    heroSection.style.animation = 'fadeIn 1s ease-in';
+                }
+            });
+        });
+        
+        // 添加淡入动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

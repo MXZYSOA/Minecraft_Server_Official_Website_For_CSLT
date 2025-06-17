@@ -1,0 +1,85 @@
+<!-- Footer Component -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h5><i class="fas fa-cube me-2"></i>创世乐土</h5>
+                <p class="text-muted">专业的 Minecraft 服务器，为玩家提供最佳的游戏体验。</p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-decoration-none">
+                        <i class="fab fa-qq fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                        <i class="fab fa-bilibili fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5>快速链接</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="features.html">便捷功能</a></li>
+                    <li><a href="team.html">团队介绍</a></li>
+                    <li><a href="guide.html">新手指引</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5>服务器信息</h5>
+                <ul class="list-unstyled">
+                    <li><a href="rankings.html">排行榜</a></li>
+                    <li><a href="faq.html">问答中心</a></li>
+                    <li><a href="sponsor.html">赞助支持</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <h5>服务器地址</h5>
+                <p class="text-muted mb-2">
+                    <i class="fas fa-server me-2"></i>
+                    <code>play.imsmc.cn</code>
+                </p>
+                <p class="text-muted mb-2">
+                    <i class="fas fa-users me-2"></i>
+                    在线玩家: <span id="onlineCount">加载中...</span>
+                </p>
+                <p class="text-muted">
+                    <i class="fas fa-clock me-2"></i>
+                    24/7 全天候运行
+                </p>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="mb-0 text-muted">&copy; 2024 创世乐土 Minecraft 服务器. 保留所有权利.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p class="mb-0 text-muted">感谢您的支持与信任</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Footer组件脚本
+(function() {
+    // 更新在线人数
+    function updateOnlineCount() {
+        const onlineCountElement = document.getElementById('onlineCount');
+        if (onlineCountElement) {
+            // 模拟在线人数（实际项目中应该从服务器获取）
+            const count = Math.floor(Math.random() * 50) + 20;
+            onlineCountElement.textContent = count;
+        }
+    }
+    
+    // 页面加载完成后更新在线人数
+    document.addEventListener('DOMContentLoaded', function() {
+        updateOnlineCount();
+        // 每30秒更新一次在线人数
+        setInterval(updateOnlineCount, 30000);
+    });
+})();
+</script>

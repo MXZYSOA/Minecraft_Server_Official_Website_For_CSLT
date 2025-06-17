@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>玩家排行榜 - 创世乐土服务器 | 官方网站</title>
+    <meta name="keywords" content="创世乐土,像素方块,PixelCraft,我的世界服务器,玩家排行榜,统计数据">
+    <link rel="shortcut icon" href="images/cd.ico"/>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="assets/css/common.css">
+    <!-- Page Specific CSS -->
+    <style>
+        .hero-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(236, 72, 153, 0.2);
+        }
+        
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .navbar {
+            background: rgba(253, 242, 248, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .footer {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .ranking-controls {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.1);
+        }
+        
+        .ranking-table {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.1);
+        }
+        
+        .table {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .table thead th {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            font-weight: 600;
+            padding: 15px;
+        }
+        
+        .table tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .table tbody tr:hover {
+            background-color: rgba(236, 72, 153, 0.05);
+            transform: scale(1.01);
+        }
+        
+        .table tbody td {
+            padding: 15px;
+            border-color: rgba(236, 72, 153, 0.1);
+            vertical-align: middle;
+        }
+        
+        .rank-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto;
+        }
+        
+        .rank-1 {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .rank-2 {
+            background: linear-gradient(45deg, #c0c0c0, #e5e5e5);
+            box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
+        }
+        
+        .rank-3 {
+            background: linear-gradient(45deg, #cd7f32, #daa520);
+            box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+        }
+        
+        .rank-other {
+            background: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+        }
+        
+        .player-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .stats-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid rgba(236, 72, 153, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .stats-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.2);
+        }
+        
+        .stats-card .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .stats-card h3 {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #6c757d;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 30px;
+            color: #dc3545;
+            background-color: rgba(248, 215, 218, 0.8);
+            border: 1px solid #f5c6cb;
+            border-radius: 10px;
+        }
+        
+        .pagination {
+            justify-content: center;
+        }
+        
+        .page-link {
+            color: var(--primary-color);
+            border-color: rgba(236, 72, 153, 0.2);
+            margin: 0 2px;
+            border-radius: 8px;
+        }
+        
+        .page-link:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .filter-btn {
+            margin: 5px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .search-box {
+            border-radius: 25px;
+            border: 2px solid rgba(236, 72, 153, 0.2);
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(236, 72, 153, 0.25);
+        }
+        
+        .trophy-icon {
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+        
+        .trophy-gold {
+            color: #ffd700;
+        }
+        
+        .trophy-silver {
+            color: #c0c0c0;
+        }
+        
+        .trophy-bronze {
+            color: #cd7f32;
+        }
+        
+        .online-indicator {
+            width: 12px;
+            height: 12px;
+            background-color: #28a745;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        .offline-indicator {
+            width: 12px;
+            height: 12px;
+            background-color: #6c757d;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+            }
+        }
+        
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            background-color: rgba(236, 72, 153, 0.1);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div data-component="navbar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold mb-4">
+                        <i class="bi bi-trophy"></i> 玩家排行榜
+                    </h1>
+                    <p class="lead">查看服务器玩家统计数据和排名信息</p>
+                    <p class="text-muted">实时更新的玩家数据，展示最活跃的社区成员</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Cards -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <i class="bi bi-people icon"></i>
+                        <h3 id="total-players">-</h3>
+                        <p class="text-muted mb-0">总玩家数</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <i class="bi bi-person-check icon"></i>
+                        <h3 id="online-players">-</h3>
+                        <p class="text-muted mb-0">在线玩家</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <i class="bi bi-clock icon"></i>
+                        <h3 id="total-playtime">-</h3>
+                        <p class="text-muted mb-0">总游戏时长</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stats-card">
+                        <i class="bi bi-calendar-event icon"></i>
+                        <h3 id="last-update">-</h3>
+                        <p class="text-muted mb-0">最后更新</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ranking Controls -->
+            <div class="ranking-controls">
+                <div class="row align-items-center">
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex flex-wrap">
+                            <button class="btn btn-outline-primary filter-btn active" data-type="playtime">
+                                <i class="bi bi-clock"></i> 游戏时长
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-type="login">
+                                <i class="bi bi-calendar"></i> 登录次数
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-type="blocks">
+                                <i class="bi bi-bricks"></i> 方块放置
+                            </button>
+                            <button class="btn btn-outline-primary filter-btn" data-type="distance">
+                                <i class="bi bi-geo"></i> 移动距离
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control search-box" id="player-search" placeholder="搜索玩家名称...">
+                            <button class="btn btn-primary" type="button" id="search-btn">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ranking Table -->
+            <div class="ranking-table">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="text-primary mb-0">
+                        <i class="bi bi-list-ol"></i> 排行榜
+                    </h3>
+                    <button class="btn btn-outline-primary" id="refresh-btn">
+                        <i class="bi bi-arrow-clockwise"></i> 刷新数据
+                    </button>
+                </div>
+                
+                <div id="ranking-content">
+                    <div class="loading">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">加载中...</span>
+                        </div>
+                        <p class="mt-3">正在加载排行榜数据...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="排行榜分页" id="pagination-container" style="display: none;">
+                <ul class="pagination" id="pagination">
+                    <!-- 分页按钮将通过JavaScript动态生成 -->
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div data-component="footer"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Component Loader -->
+    <script src="components/component-loader.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // 全局变量
+        let rankingData = [];
+        let currentPage = 1;
+        let currentType = 'playtime';
+        let searchQuery = '';
+        const itemsPerPage = 20;
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeRanking();
+            bindEvents();
+        });
+        
+        // 初始化排行榜
+        function initializeRanking() {
+            loadRankingData();
+            loadStatistics();
+        }
+        
+        // 绑定事件
+        function bindEvents() {
+            // 筛选按钮事件
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentType = this.dataset.type;
+                    currentPage = 1;
+                    loadRankingData();
+                });
+            });
+            
+            // 搜索事件
+            document.getElementById('search-btn').addEventListener('click', performSearch);
+            document.getElementById('player-search').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // 刷新按钮事件
+            document.getElementById('refresh-btn').addEventListener('click', function() {
+                this.innerHTML = '<i class="bi bi-arrow-clockwise"></i> 刷新中...';
+                this.disabled = true;
+                loadRankingData();
+                loadStatistics();
+                setTimeout(() => {
+                    this.innerHTML = '<i class="bi bi-arrow-clockwise"></i> 刷新数据';
+                    this.disabled = false;
+                }, 2000);
+            });
+        }
+        
+        // 执行搜索
+        function performSearch() {
+            searchQuery = document.getElementById('player-search').value.trim();
+            currentPage = 1;
+            displayRanking();
+        }
+        
+        // 加载排行榜数据
+        async function loadRankingData() {
+            try {
+                // 模拟API调用
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // 生成模拟数据
+                rankingData = generateMockData();
+                displayRanking();
+            } catch (error) {
+                console.error('加载排行榜数据失败:', error);
+                document.getElementById('ranking-content').innerHTML = 
+                    '<div class="error"><i class="bi bi-exclamation-triangle"></i> 加载排行榜数据失败，请稍后重试</div>';
+            }
+        }
+        
+        // 加载统计数据
+        async function loadStatistics() {
+            try {
+                // 模拟API调用
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                // 更新统计数据
+                document.getElementById('total-players').textContent = '1,234';
+                document.getElementById('online-players').textContent = '56';
+                document.getElementById('total-playtime').textContent = '12,345小时';
+                document.getElementById('last-update').textContent = '刚刚';
+            } catch (error) {
+                console.error('加载统计数据失败:', error);
+            }
+        }
+        
+        // 生成模拟数据
+        function generateMockData() {
+            const players = [
+                'Steve', 'Alex', 'Notch', 'Herobrine', 'Enderman', 'Creeper', 'Zombie', 'Skeleton',
+                'Spider', 'Witch', 'Villager', 'Iron_Golem', 'Snow_Golem', 'Blaze', 'Ghast', 'Piglin',
+                'Strider', 'Hoglin', 'Zoglin', 'Piglin_Brute', 'Wither', 'Ender_Dragon', 'Guardian',
+                'Elder_Guardian', 'Shulker', 'Phantom', 'Drowned', 'Husk', 'Stray', 'Wither_Skeleton'
+            ];
+            
+            return players.map((name, index) => {
+                const baseValue = Math.max(1000 - index * 30, 10);
+                return {
+                    name: name,
+                    playtime: baseValue + Math.random() * 100,
+                    login: Math.floor(baseValue / 10) + Math.floor(Math.random() * 50),
+                    blocks: baseValue * 100 + Math.floor(Math.random() * 10000),
+                    distance: baseValue * 50 + Math.floor(Math.random() * 5000),
+                    online: Math.random() > 0.7,
+                    lastSeen: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000)
+                };
+            });
+        }
+        
+        // 显示排行榜
+        function displayRanking() {
+            let filteredData = rankingData;
+            
+            // 应用搜索过滤
+            if (searchQuery) {
+                filteredData = filteredData.filter(player => 
+                    player.name.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+            }
+            
+            // 排序数据
+            filteredData.sort((a, b) => b[currentType] - a[currentType]);
+            
+            // 分页
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageData = filteredData.slice(startIndex, endIndex);
+            
+            // 生成表格
+            let tableHTML = `
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th width="80">排名</th>
+                                <th width="60">头像</th>
+                                <th>玩家名称</th>
+                                <th>${getColumnTitle(currentType)}</th>
+                                <th width="100">状态</th>
+                                <th width="120">最后在线</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            pageData.forEach((player, index) => {
+                const globalRank = startIndex + index + 1;
+                const rankClass = getRankClass(globalRank);
+                const value = formatValue(player[currentType], currentType);
+                const statusIndicator = player.online ? 
+                    '<span class="badge bg-success">在线<span class="online-indicator"></span></span>' :
+                    '<span class="badge bg-secondary">离线<span class="offline-indicator"></span></span>';
+                
+                tableHTML += `
+                    <tr>
+                        <td>
+                            <div class="rank-badge ${rankClass}">
+                                ${globalRank <= 3 ? getTrophyIcon(globalRank) : globalRank}
+                            </div>
+                        </td>
+                        <td>
+                            <img src="https://minotar.net/avatar/${player.name}/40" 
+                                 alt="${player.name}" class="player-avatar" 
+                                 onerror="this.src='images/default-avatar.png'">
+                        </td>
+                        <td>
+                            <strong>${player.name}</strong>
+                        </td>
+                        <td>
+                            <strong>${value}</strong>
+                            ${currentType === 'playtime' ? generateProgressBar(player[currentType], filteredData[0][currentType]) : ''}
+                        </td>
+                        <td>${statusIndicator}</td>
+                        <td>
+                            <small class="text-muted">${formatLastSeen(player.lastSeen)}</small>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableHTML += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            document.getElementById('ranking-content').innerHTML = tableHTML;
+            
+            // 更新分页
+            updatePagination(totalPages);
+        }
+        
+        // 获取排名样式类
+        function getRankClass(rank) {
+            switch(rank) {
+                case 1: return 'rank-1';
+                case 2: return 'rank-2';
+                case 3: return 'rank-3';
+                default: return 'rank-other';
+            }
+        }
+        
+        // 获取奖杯图标
+        function getTrophyIcon(rank) {
+            switch(rank) {
+                case 1: return '<i class="bi bi-trophy-fill trophy-gold"></i>';
+                case 2: return '<i class="bi bi-trophy-fill trophy-silver"></i>';
+                case 3: return '<i class="bi bi-trophy-fill trophy-bronze"></i>';
+                default: return rank;
+            }
+        }
+        
+        // 获取列标题
+        function getColumnTitle(type) {
+            switch(type) {
+                case 'playtime': return '游戏时长';
+                case 'login': return '登录次数';
+                case 'blocks': return '方块放置';
+                case 'distance': return '移动距离';
+                default: return '数值';
+            }
+        }
+        
+        // 格式化数值
+        function formatValue(value, type) {
+            switch(type) {
+                case 'playtime':
+                    const hours = Math.floor(value);
+                    const minutes = Math.floor((value - hours) * 60);
+                    return `${hours}小时${minutes}分钟`;
+                case 'login':
+                    return `${Math.floor(value)}次`;
+                case 'blocks':
+                    return `${Math.floor(value).toLocaleString()}个`;
+                case 'distance':
+                    return `${Math.floor(value).toLocaleString()}米`;
+                default:
+                    return Math.floor(value).toString();
+            }
+        }
+        
+        // 格式化最后在线时间
+        function formatLastSeen(date) {
+            const now = new Date();
+            const diff = now - date;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor(diff / (1000 * 60));
+            
+            if (days > 0) {
+                return `${days}天前`;
+            } else if (hours > 0) {
+                return `${hours}小时前`;
+            } else if (minutes > 0) {
+                return `${minutes}分钟前`;
+            } else {
+                return '刚刚';
+            }
+        }
+        
+        // 生成进度条
+        function generateProgressBar(value, maxValue) {
+            const percentage = Math.min((value / maxValue) * 100, 100);
+            return `
+                <div class="progress mt-1" style="height: 4px;">
+                    <div class="progress-bar" style="width: ${percentage}%"></div>
+                </div>
+            `;
+        }
+        
+        // 更新分页
+        function updatePagination(totalPages) {
+            if (totalPages <= 1) {
+                document.getElementById('pagination-container').style.display = 'none';
+                return;
+            }
+            
+            document.getElementById('pagination-container').style.display = 'block';
+            
+            let paginationHTML = '';
+            
+            // 上一页
+            paginationHTML += `
+                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="changePage(${currentPage - 1})">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+            `;
+            
+            // 页码
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    paginationHTML += `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+                        </li>
+                    `;
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    paginationHTML += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+            }
+            
+            // 下一页
+            paginationHTML += `
+                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="changePage(${currentPage + 1})">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+            `;
+            
+            document.getElementById('pagination').innerHTML = paginationHTML;
+        }
+        
+        // 切换页面
+        function changePage(page) {
+            const totalPages = Math.ceil(rankingData.length / itemsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                displayRanking();
+                
+                // 滚动到表格顶部
+                document.querySelector('.ranking-table').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+        // 初始化工具提示
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
+</body>
+</html>

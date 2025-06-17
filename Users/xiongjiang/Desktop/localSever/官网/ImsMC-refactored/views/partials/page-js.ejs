@@ -1,0 +1,207 @@
+<% if (typeof page !== 'undefined') { %>
+    <% switch(page) { %>
+        <% case 'guide': %>
+            <script>
+                // 新手指引页面的JavaScript
+                document.addEventListener('DOMContentLoaded', function() {
+                    loadGuideData();
+                });
+                
+                async function loadGuideData() {
+                    try {
+                        const response = await fetch('/api/guide');
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            const data = result.data;
+                            updatePageContent(data);
+                            generateNavTabs(data.sections);
+                            generateContent(data.sections);
+                            generateQuickLinks(data.quickLinks);
+                        } else {
+                            showError('加载指南数据失败');
+                        }
+                    } catch (error) {
+                        console.error('加载指南数据时出错:', error);
+                        showError('网络错误，请稍后重试');
+                    }
+                }
+                
+                function updatePageContent(data) {
+                    document.getElementById('guide-title').textContent = data.title;
+                    document.getElementById('guide-description').textContent = data.description;
+                    document.getElementById('last-updated').textContent = data.lastUpdated;
+                }
+                
+                function generateNavTabs(sections) {
+                    const navContainer = document.getElementById('guide-nav-tabs');
+                    navContainer.innerHTML = sections.map((section, index) => `
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link ${index === 0 ? 'active' : ''}" 
+                                    id="${section.id}-tab" 
+                                    data-bs-toggle="tab" 
+                                    data-bs-target="#${section.id}" 
+                                    type="button" 
+                                    role="tab">
+                                ${section.icon} ${section.title}
+                            </button>
+                        </li>
+                    `).join('');
+                }
+                
+                function generateContent(sections) {
+                    const contentContainer = document.getElementById('guide-content');
+                    contentContainer.innerHTML = sections.map((section, index) => `
+                        <div class="tab-pane fade ${index === 0 ? 'show active' : ''}" 
+                             id="${section.id}" 
+                             role="tabpanel">
+                            <h3 class="mb-4">
+                                <span class="icon-large">${section.icon}</span>
+                                ${section.title}
+                            </h3>
+                            ${section.content.map(item => generateContentItem(item)).join('')}
+                        </div>
+                    `).join('');
+                }
+                
+                function generateContentItem(item) {
+                    switch(item.type) {
+                        case 'text':
+                            return `<p class="mb-3">${item.content}</p>`;
+                        case 'feature':
+                            return `
+                                <div class="feature-item">
+                                    <h5 class="text-primary">${item.title}</h5>
+                                    <p class="mb-0">${item.description}</p>
+                                </div>
+                            `;
+                        case 'subsection':
+                            return `
+                                <div class="mb-4">
+                                    <h4 class="text-primary mb-3">${item.title}</h4>
+                                    ${item.content.map(subItem => generateContentItem(subItem)).join('')}
+                                </div>
+                            `;
+                        case 'list':
+                            return `
+                                <ul class="list-unstyled">
+                                    ${item.items.map(listItem => `<li class="mb-2"><i class="fas fa-check text-success me-2"></i>${listItem}</li>`).join('')}
+                                </ul>
+                            `;
+                        case 'step':
+                            return `
+                                <div class="step-item">
+                                    <h6 class="text-primary mb-2">${item.title}</h6>
+                                    <p class="mb-0">${item.description}</p>
+                                </div>
+                            `;
+                        case 'tip':
+                            return `
+                                <div class="alert alert-info">
+                                    <i class="fas fa-lightbulb me-2"></i>
+                                    <strong>提示：</strong> ${item.content}
+                                </div>
+                            `;
+                        case 'help':
+                            return `
+                                <div class="help-item">
+                                    <h6 class="text-primary">${item.title}</h6>
+                                    <p class="mb-2">${item.description}</p>
+                                    <a href="${item.link}" class="btn btn-sm btn-outline-primary" target="_blank">
+                                        ${item.linkText}
+                                    </a>
+                                </div>
+                            `;
+                        default:
+                            return `<p>${item.content || ''}</p>`;
+                    }
+                }
+                
+                function generateQuickLinks(quickLinks) {
+                    const container = document.getElementById('quick-links-content');
+                    container.innerHTML = `
+                        <h4 class="mb-4">
+                            <span class="icon-large">⚡</span>
+                            快捷链接
+                        </h4>
+                        ${quickLinks.map(link => `
+                            <a href="${link.url}" class="quick-link-item" target="_blank">
+                                <span class="icon">${link.icon}</span>
+                                <div>
+                                    <strong>${link.title}</strong>
+                                    <br>
+                                    <small class="text-muted">${link.description}</small>
+                                </div>
+                            </a>
+                        `).join('')}
+                    `;
+                }
+                
+                function showError(message) {
+                    document.getElementById('guide-content').innerHTML = `
+                        <div class="error">
+                            <i class="fas fa-exclamation-triangle fa-3x text-warning mb-3"></i>
+                            <h4>加载失败</h4>
+                            <p>${message}</p>
+                            <button class="btn btn-primary" onclick="location.reload()">重新加载</button>
+                        </div>
+                    `;
+                }
+                
+                // 复制到剪贴板功能
+                function copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        // 可以添加提示
+                        console.log('已复制到剪贴板:', text);
+                    });
+                }
+            </script>
+            <% break; %>
+        <% case 'rankings': %>
+            <script>
+                // 排行榜页面的JavaScript
+                document.addEventListener('DOMContentLoaded', function() {
+                    loadRankingsData();
+                });
+                
+                async function loadRankingsData() {
+                    try {
+                        const response = await fetch('/api/rankings');
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            // 处理排行榜数据
+                            console.log('排行榜数据:', result.data);
+                        }
+                    } catch (error) {
+                        console.error('加载排行榜数据失败:', error);
+                    }
+                }
+            </script>
+            <% break; %>
+        <% case 'sponsor': %>
+            <script>
+                // 赞助页面的JavaScript
+                document.addEventListener('DOMContentLoaded', function() {
+                    loadSponsorData();
+                });
+                
+                async function loadSponsorData() {
+                    try {
+                        const response = await fetch('/api/sponsor');
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            // 处理赞助数据
+                            console.log('赞助数据:', result.data);
+                        }
+                    } catch (error) {
+                        console.error('加载赞助数据失败:', error);
+                    }
+                }
+            </script>
+            <% break; %>
+        <% default: %>
+            <!-- Default page JavaScript -->
+    <% } %>
+<% } %>

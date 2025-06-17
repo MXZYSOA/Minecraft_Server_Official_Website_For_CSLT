@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>便捷功能 - 创世乐土服务器 | 官方网站</title>
+    <meta name="keywords" content="创世乐土,像素方块,PixelCraft,我的世界服务器,生存服,空岛服,">
+    <link rel="shortcut icon" href="images/cd.ico"/>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="assets/css/common.css">
+    <!-- Page Specific CSS -->
+    <style>
+        .hero-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(236, 72, 153, 0.2);
+        }
+        
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .navbar {
+            background: rgba(253, 242, 248, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+        
+        .footer {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .command-table {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .table th {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+        
+        .table td {
+            border-color: rgba(236, 72, 153, 0.1);
+        }
+        
+        .code-highlight {
+            background-color: rgba(236, 72, 153, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .blue-text {
+            color: #4a90e2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div data-component="navbar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold mb-4">
+                        <i class="bi bi-tools"></i> 便捷功能
+                    </h1>
+                    <p class="lead">这里有服务器相关的便捷插件使用说明</p>
+                    <p class="text-muted">update: 2.28</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Left Column -->
+                <div class="col-lg-6">
+                    <!-- 蓝图投影 -->
+                    <div class="feature-card">
+                        <h2 class="text-primary mb-4">
+                            <i class="bi bi-diagram-3"></i> <span class="blue-text">蓝图投影</span>
+                        </h2>
+                        <p class="mb-4">
+                            <u>Structura</u>是一个可以从mcstructure文件生成类似全息投影的资源包的工具
+                        </p>
+                        
+                        <h5 class="text-primary mb-3">
+                            <i class="bi bi-list-ol"></i> 使用教程[win10]
+                        </h5>
+                        <ol class="mb-4">
+                            <li>输入<span class="code-highlight">/give @s structure_block</span>获得结构方块。</li>
+                            <li>用结构方块框住需要的结构，确认没有问题后点击"导出"</li>
+                            <li>下载Structura。<strong>(<a href="Structura.1.4.0.beta.zip" class="text-primary">点击下载</a>)</strong></li>
+                            <li>解压后运行Structura.exe。structure file导出刚刚导出的mcstructure文件，在pack name为资源包命名，点击make pack导出资源包。</li>
+                            <li>双击mcpack导入资源包，在全局资源加载后在世界中放置一个盔甲架即可显示，转换姿势可以显示单层结构。</li>
+                        </ol>
+                        
+                        <h5 class="text-primary mb-3">
+                            <i class="bi bi-gear"></i> advanced高级功能
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle text-success me-2"></i>lcon file 更改资源包的图标。</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>transparency更改投影透明度。</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>勾选make lists导出文件时附带材料清单</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>替换Vanilla_Resource_Pack文件夹更换投影材质</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>offset设置投影偏移</li>
+                            <li><i class="bi bi-check-circle text-success me-2"></i>导入mcstructure文件后在name tag可设置命名牌投影，此方法可以让同一个资源包同时显示多个投影</li>
+                            <li><i class="bi bi-link-45deg text-primary me-2"></i><a href="https://github.com/RavinMaddHatter/Structura/blob/main/docs/Editing%20Blocks.md" class="text-primary">update blocks功能详见文档</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 快捷菜单 -->
+                    <div class="feature-card">
+                        <h2 class="text-primary mb-4">
+                            <i class="bi bi-menu-button-wide"></i> <span class="blue-text">快捷菜单 & 指令查询</span>
+                        </h2>
+                        <p class="mb-3">如果记不住各种指令的话可以在聊天栏输入<span class="code-highlight">/m</span>或<span class="code-highlight">/td?</span></p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-start">
+                                <span class="code-highlight me-3">/m</span>
+                                <span>内置发送坐标、灵魂出窍、获得鞘翅、获取潜影盒、假人管理面板、排行榜查询、聊天显示开关，跨服面板</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-start">
+                                <span class="code-highlight me-3">/td？</span>
+                                <span>可用于查询服务器大部分的便捷指令，部分指令没有权限，如果想使用没有权限的指令可以去创造服</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 其他功能 -->
+                    <div class="feature-card">
+                        <h2 class="text-primary mb-4">
+                            <i class="bi bi-plus-circle"></i> <span class="blue-text">其他功能</span>
+                        </h2>
+                        
+                        <div class="mb-4">
+                            <h5 class="text-primary">
+                                <i class="bi bi-chat-square-dots"></i> 消息互通
+                            </h5>
+                            <p>服务器的聊天栏消息可以在生存、创造、平坦三个服务器消息互通，在其中一个服务器内说话其他的服务器也会收到相同的信息，<br />同时，在服务器中说的话也会实时同步到服务器交流群中，群内对话也可同步到服务器</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5 class="text-primary">
+                                <i class="bi bi-geo-alt"></i> 死亡点记录
+                            </h5>
+                            <p>玩家死亡后会记录最后一次死亡坐标，方便找回凋落物</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5 class="text-primary">
+                                <i class="bi bi-trophy"></i> 成就系统
+                            </h5>
+                            <p>当玩家达成一定条件后会获得各种奇奇怪怪的成就</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="col-lg-6">
+                    <div class="feature-card">
+                        <h2 class="text-primary mb-4">
+                            <i class="bi bi-terminal"></i> <span class="blue-text">指令列表</span>
+                        </h2>
+                        <p class="mb-3">查看所有可以使用的指令</p>
+                        <div class="alert alert-info" role="alert">
+                            <ul class="mb-0">
+                                <li><span class="blue-text">蓝色表示仅能在创造服和平坦服使用</span></li>
+                                <li>二级指令带<span class="code-highlight">*</span>表明后面要带<span class="code-highlight">true</span>或<span class="code-highlight">false</span></li>
+                                <li>二级指令带<span class="code-highlight">+</span>表明后面要带数字</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="command-table">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>指令</th>
+                                        <th>二级指令</th>
+                                        <th>描述</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="code-highlight">/ob</span></td>
+                                        <td>无</td>
+                                        <td>灵魂出窍</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/tr</span></td>
+                                        <td><span class="code-highlight">s</span>生存服<span class="code-highlight">c</span>创造服<span class="code-highlight">p</span>超平坦</td>
+                                        <td>跨服</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/cl</span></td>
+                                        <td>任意公式</td>
+                                        <td>计算器</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight blue-text">/draw</span></td>
+                                        <td><span class="code-highlight">ch</span>填充当前区块<span class="code-highlight">ci<sup>+</sup></span>画圆<span class="code-highlight">-ci<sup>+</sup></span>画空心圆<span class="code-highlight">mr<sup>+</sup></span>设置最大半径<span class="code-highlight">sp<sup>+</sup></span>画球体<span class="code-highlight">-sp<sup>+</sup></span>画空心球体</td>
+                                        <td>简单建造</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/fpg</span></td>
+                                        <td>无</td>
+                                        <td>假人管理面板</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/hsa</span></td>
+                                        <td><span class="code-highlight">clear</span>清空hsa缓存<span class="code-highlight blue-text">draw</span>在hsa中央放置脚下方块<span class="code-highlight">list</span>列出所有hsa<span class="code-highlight">show*</span>开关hsa显示</td>
+                                        <td>结构刷怪区域</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/heres</span></td>
+                                        <td>无</td>
+                                        <td>广播当前坐标</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/mspt</span></td>
+                                        <td>无</td>
+                                        <td>mspt和tps</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/prof</span></td>
+                                        <td>无 游戏性能分析<span class="code-highlight">actor</span>实体性能分析</td>
+                                        <td>游戏性能分析</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/ranking</span></td>
+                                        <td>无</td>
+                                        <td>游戏排行榜</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/self</span></td>
+                                        <td><span class="code-highlight">chunk*</span>开关区块显示<span class="code-highlight">me*</span>开关距离测量<span class="code-highlight">rs*</span>开关红石信号源显示</td>
+                                        <td>功能开关</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/slime</span></td>
+                                        <td><span class="code-highlight">c</span>清空史莱姆缓存<span class="code-highlight">r<sup>+</sup></span>设置史莱姆区块显示半径<span class="code-highlight">show*</span>显示史莱姆区块</td>
+                                        <td>史莱姆区块</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight blue-text">/tick</span></td>
+                                        <td><span class="code-highlight">acc<sup>+</sup></span>改变世界速度<span class="code-highlight">r</span>重置世界速度</td>
+                                        <td>改变世界速度</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="code-highlight">/village</span></td>
+                                        <td><span class="code-highlight">b*</span>开关村庄边界显示<span class="code-highlight">c*显示村庄中心</span><span class="code-highlight">list</span>列出所有在加载的村庄<span class="code-highlight">n</span>显示最近的村庄的详情信息<span class="code-highlight">p*</span>显示poi查询范围<span class="code-highlight">s*</span>显示铁傀儡刷新区域<span class="code-highlight">v*</span>显示村民头顶信息</td>
+                                        <td>村庄功能</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="index.html" class="btn btn-primary btn-lg">
+                    <i class="bi bi-house"></i> 返回首页
+                </a>
+                <a href="faq.html" class="btn btn-outline-primary btn-lg ms-3">
+                    <i class="bi bi-question-circle"></i> 问答中心
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div data-component="footer"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Component Loader -->
+    <script src="components/component-loader.js"></script>
+    
+    <!-- Smooth scrolling for anchor links -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
